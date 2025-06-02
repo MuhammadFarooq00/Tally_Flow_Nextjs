@@ -5,6 +5,8 @@
   "hints": {
     "axe/name-role-value": "off",
     "compat-api/css": "off",
-    "axe/aria": "off"
+    "axe/aria": "off",
+    "apple-touch-icons": "off",
+    "compat-api/html": "off"
   }
 }
