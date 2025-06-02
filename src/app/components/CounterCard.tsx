@@ -50,7 +50,7 @@ export function CounterCard({
   const [decrementKey, setDecrementKey] = useState('');
   const [selectedIncrementKey, setSelectedIncrementKey] = useState('ArrowUp');
   const [selectedDecrementKey, setSelectedDecrementKey] = useState('ArrowDown');
-  const { settings, updateSettings, playSound, vibrate } = useSettings();
+  const { settings, updateSettings, playIncrementSound, playDecrementSound, vibrate } = useSettings();
 
   const keyOptions = [
     { label: 'Arrow Up', value: 'ArrowUp' },
@@ -67,20 +67,20 @@ export function CounterCard({
   const handleIncrement = useCallback(() => {
     const incrementValue = parseInt(customIncrement) || 1;
     onIncrement(counter.id, incrementValue);
-    playSound();
+    playIncrementSound();
     vibrate();
-  }, [customIncrement, onIncrement, counter.id, playSound, vibrate]);
+  }, [customIncrement, onIncrement, counter.id, playIncrementSound, vibrate]);
 
   const handleDecrement = useCallback(() => {
     const decrementValue = parseInt(customDecrement) || 1;
     onDecrement(counter.id, decrementValue);
-    playSound();
+    playDecrementSound();
     vibrate();
-  }, [customDecrement, onDecrement, counter.id, playSound, vibrate]);
+  }, [customDecrement, onDecrement, counter.id, playDecrementSound, vibrate]);
 
   const handleReset = () => {
     onReset(counter.id);
-    playSound();
+    playDecrementSound();
     vibrate();
   };
 

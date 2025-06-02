@@ -340,7 +340,7 @@ export function CounterList() {
             {/* Grid View with fixed height and scroll */}
            <div className=' h-[100%] pt-10  '>
              {viewMode === 'grid' && (
-              <div className="h-full pb-20 overflow-y-auto p-2 custom-scrollbar">
+              <div className={`  pb-20  overflow-y-auto p-2 custom-scrollbar ${counters.length < 1 ? 'flex justify-center items-start' : ' h-full'}`}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-full">
                   {counters.map((counter) => (
                     <div key={counter.id} className="animate-fade-in">
@@ -354,12 +354,18 @@ export function CounterList() {
                       />
                     </div>
                   ))}
-                  {counters.length <= 3 && (
-                    <div className="animate-fade-in">
+                   {(counters.length <= 3 && counters.length >= 1) && (
+                    <div className="animate-fade-in    w-full ">
                       <AddCounterBox />
                     </div>
                   )}
+                  
                 </div>
+                {counters.length < 1 && (
+                    <div className="animate-fade-in    w-full ">
+                      <AddCounterBox />
+                    </div>
+                  )}
                 
                 {/* {counters.length > gridDisplayLimit && (
                   <div className="flex justify-center">
@@ -390,6 +396,11 @@ export function CounterList() {
                     />
                   </div>
                 ))}
+                 {counters.length < 1 && (
+                    <div className="animate-fade-in ">
+                      <AddCounterBox />
+                    </div>
+                  )}
               
               </div>
             )}
@@ -697,11 +708,21 @@ export function CounterList() {
       <Dialog open={showAddModal} onOpenChange={setShowAddModal}>
         <DialogContent className="sm:max-w-md  dark:text-white text-white bg-white/10 dark:bg-black/80 border-white/10 backdrop-blur-lg">
           <DialogHeader>
-            <DialogTitle className="font-display text-xl bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent">Add New Counter</DialogTitle>
+          <DialogTitle 
+  className="font-display text-xl"
+  style={{
+    background: 'linear-gradient(to right, #34d399, #a855f7)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text'
+  }}
+>
+  Add New Counter
+</DialogTitle>
           </DialogHeader>
           <div className="space-y-1 py-4 ">
             <div className="space-y-0">
-              <label className="text-sm text-foreground/70 my-3">Counter Name</label>
+              <label className="text-sm dark:text-white my-3">Counter Name</label>
               <Input
                 value={newCounterName}
                 onChange={(e) => setNewCounterName(e.target.value)}
@@ -725,7 +746,13 @@ export function CounterList() {
                 setShowAddModal(false);
                 setNewCounterName('');
               }}
-              className="flex-1"
+              style={{
+                background: 'linear-gradient(to right, #34d399, #a855f7)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}
+              className="flex-1  dark:text-[#000] dark:border-white"
             >
               Cancel
             </Button>

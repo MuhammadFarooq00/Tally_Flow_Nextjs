@@ -16,10 +16,9 @@ export function useSettings() {
     setSettings(prev => ({ ...prev, ...updates }));
   };
 
-  const playSound = () => {
+  const playIncrementSound = () => {
     if (settings.soundEnabled) {
       try {
-        // Create a simple beep sound
         const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
@@ -27,11 +26,36 @@ export function useSettings() {
         oscillator.connect(gainNode);
         gainNode.connect(audioContext.destination);
         
-        // Use a more pleasant tone
-        oscillator.frequency.value = 600;
+        // Higher, more positive tone for increment
+        oscillator.frequency.value = 800;
         oscillator.type = 'sine';
         
         gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+        
+        oscillator.start(audioContext.currentTime);
+        oscillator.stop(audioContext.currentTime + 0.1);
+      } catch (error) {
+        console.error('Failed to play sound:', error);
+      }
+    }
+  };
+
+  const playDecrementSound = () => {
+    if (settings.soundEnabled) {
+      try {
+        const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+        const oscillator = audioContext.createOscillator();
+        const gainNode = audioContext.createGain();
+        
+        oscillator.connect(gainNode);
+        gainNode.connect(audioContext.destination);
+        
+        // Lower, more negative tone for decrement
+        oscillator.frequency.value = 1200;
+        oscillator.type = 'square';
+        
+        gainNode.gain.setValueAtTime(0.4, audioContext.currentTime);
         gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
         
         oscillator.start(audioContext.currentTime);
@@ -51,7 +75,8 @@ export function useSettings() {
   return {
     settings,
     updateSettings,
-    playSound,
+    playIncrementSound,
+    playDecrementSound,
     vibrate,
   };
 }
