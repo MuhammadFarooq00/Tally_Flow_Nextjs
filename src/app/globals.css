@@ -183,7 +183,7 @@
   color: #1e293b; /* Dark text for light theme */
 }
 
-.light h1, 
+/* .light h1, 
 .light h2, 
 .light h3, 
 .light h4, 
@@ -194,8 +194,11 @@
 .light span,
 .light a,
 .light label {
-  color: #1e293b;
+  color: #fff;
 }
+.light .lightModeBlackColor {
+   color: #000
+} */
 
 .light .text-white {
   color: #1e293b !important;
@@ -305,7 +308,7 @@
 
 /* Enhanced card styles for light theme */
 .light .card {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.767);
   box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
   -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
@@ -408,4 +411,215 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: #818cf8 #0000; /* thumb color, transparent track */
+}
+
+
+
+/* Add these styles to ensure proper light mode card styling */
+.light .backdrop-blur-md {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.light .border-gray-200 {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure proper text contrast in light mode */
+.light .text-black\/80 {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Improve hover effect in light mode */
+.light .hover\:scale-105:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+
+
+
+/* Add these styles to ensure proper text colors in light mode */
+:root {
+  --foreground: 222.2 84% 4.9%;
+}
+
+.light {
+  --foreground: 222.2 84% 4.9%;
+}
+
+.light .text-foreground {
+  color: hsl(var(--foreground));
+}
+
+/* Ensure text is visible in light mode */
+.light p,
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
+  color: hsl(var(--foreground));
+}
+
+
+
+
+/* Add this to your globals.css */
+.light .dot-inactive {
+  background-color: #778597 !important; /* gray-600 */
+}
+
+.light .dot-inactive:hover {
+  background-color: #475161 !important; /* gray-700 */
+}
+
+
+
+/* Add this to your globals.css */
+.light .fullscreen-button {
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+}
+
+.light .fullscreen-button:hover {
+  background-color: #f9fafb !important;
+}
+
+
+
+/* Force active state styles */
+.light [data-state="active"] {
+  background-color: transparent !important; /* emerald-500 */
+  color: black !important;
+  border: 1px solid rgba(130, 130, 130, 0.721) !important;
+}
+
+/* Ensure hover states */
+.light [data-state="active"]:hover {
+  background-color: transparent !important; /* emerald-600 */
+}
+
+/* Ensure proper text color */
+.light [data-state="active"] * {
+  color: white !important;
+}
+
+
+/* Enhanced TabsList styling */
+.light .TabsList {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.9),
+    rgba(249, 250, 251, 0.9)
+  );
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Enhanced TabsTrigger styling for light mode */
+.light .TabsTrigger {
+  color: #4B5563; /* gray-600 */
+  transition: all 0.2s ease;
+}
+
+.light .TabsTrigger:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.light .TabsTrigger[data-state="active"] {
+  background: linear-gradient(135deg, #80d3b7, #64c5a6); /* emerald-500 to emerald-600 */
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(108, 183, 158, 0.2);
+}
+
+/* Add subtle hover effect for active tab */
+.light .TabsTrigger[data-state="active"]:hover {
+  background: linear-gradient(135deg, #059669, #047857); /* emerald-600 to emerald-700 */
+}
+
+/* Add subtle shine effect on active tab */
+.light .TabsTrigger[data-state="active"]::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.5s;
+}
+
+.light .TabsTrigger[data-state="active"]:hover::after {
+  left: 150%;
+}
+
+
+/* Select component styling */
+.SelectTrigger {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+}
+
+.SelectContent {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.SelectItem {
+  color: white !important;
+}
+
+.SelectItem:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.SelectItem[data-state="checked"] {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Ensure the check icon is visible */
+.SelectItem [data-state="checked"] {
+  color: white !important;
+}
+
+/* Style the scroll buttons */
+.SelectScrollUpButton,
+.SelectScrollDownButton {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Style the label */
+.SelectLabel {
+  color: white !important;
+  opacity: 0.7;
+}
+
+/* src/app/globals.css */
+
+/* ... existing styles ... */
+
+/* Ensure all text inside the select dropdown is white in light mode */
+.light .select-dropdown-fix *,
+.light .SelectContent * {
+  color: #ffffff !important;
+}
+
+/* Ensure the checkmark icon is also white */
+.light .SelectItem [data-state="checked"] svg {
+    color: #ffffff !important;
+}
+
+/* Ensure the scroll buttons are white */
+.light .SelectScrollUpButton,
+.light .SelectScrollDownButton {
+  color: #ffffff !important;
 }

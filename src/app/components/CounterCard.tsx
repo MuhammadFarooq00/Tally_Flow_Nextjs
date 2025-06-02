@@ -218,8 +218,18 @@ export function CounterCard({
               
               <DialogContent className="sm:max-w-md dark:text-white h-[80vh] overflow-y-auto custom-scrollbar bg-white  dark:bg-black/80 border-white/10 backdrop-blur-lg">
                 <DialogHeader>
-                  <DialogTitle className="font-display text-xl bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent">Counter Settings</DialogTitle>
-                </DialogHeader>
+                <DialogTitle 
+  className="font-display text-xl"
+  style={{
+    background: 'linear-gradient(to right, #34d399, #a855f7)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent'
+  }}
+>
+  Counter Settings
+</DialogTitle>
+                    </DialogHeader>
                 <div className="space-y-6 dark:text-white py-4">
                   {/* Counter Name */}
                   <div className="space-y-2">
@@ -280,33 +290,51 @@ export function CounterCard({
                     />
                   </div>
                   {/* Increment Key */}
+
                   <div className="space-y-2">
-                    <label className="text-sm text-foreground/70">Increment Key</label>
+                    <label className="text-sm text-white/70">Increment Key</label>
                     <Select value={selectedIncrementKey} onValueChange={setSelectedIncrementKey}>
-                      <SelectTrigger className="w-full">
+                      {/* Applied styling classes */}
+                      <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      {/* Applied styling classes */}
+                      <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
                         {keyOptions.map(opt => (
-                          <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          <SelectItem
+                            key={opt.value}
+                            value={opt.value}
+                            className="text-white hover:bg-white/20 focus:bg-white/20"
+                          >
+                            {opt.label}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
                   {/* Decrement Key */}
-                  <div className="space-y-2">
-                    <label className="text-sm text-foreground/70">Decrement Key</label>
+                  <div className="space-y-2"> {/* Removed dark:text-white from parent div */}
+                    <label className="text-sm text-white/70">Decrement Key</label> {/* Changed text color */}
                     <Select value={selectedDecrementKey} onValueChange={setSelectedDecrementKey}>
-                      <SelectTrigger className="w-full">
+                      {/* Applied the same styling classes */}
+                      <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      {/* Applied the same styling classes */}
+                      <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
                         {keyOptions.map(opt => (
-                          <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
+                          <SelectItem
+                            key={opt.value}
+                            value={opt.value}
+                            className="text-white hover:bg-white/20 focus:bg-white/20"
+                          >
+                            {opt.label}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
+
                   {/* Reset Button */}
                   <div className="space-y-2">
                     <Button
@@ -348,7 +376,7 @@ export function CounterCard({
   // Default (grid) or fullscreen view with redesigned buttons
   if (isFullScreen) {
     return (
-      <Card className={`${cardClassName} dark:text-white glass-effect counter-shadow animate-fade-in relative overflow-hidden group border border-white/20 dark:border-white/20 light:border-gray-300/30`}> 
+      <Card className={`${cardClassName} dark:text-white text-black glass-effect counter-shadow animate-fade-in relative overflow-hidden group border border-white/20 dark:border-white/20 light:border-gray-300/30`}> 
         <div className="flex flex-col items-center mb-8 justify-center h-full w-full px-2 sm:px-0">
           {/* Top bar: creation date, volume, settings */}
           
@@ -357,7 +385,7 @@ export function CounterCard({
              <div className="h-10 px-4 w-auto  font-bold capitalize text-gray-500 text-center rounded-full bg-black/10 dark:bg-muted/40 flex  items-center justify-center">
              Counter Name: {counter.name}
             </div>
-            <div className=" h-10 px-4 rounded-full bg-black/10 dark:bg-muted/40 flex text-gray-500 items-center justify-center" >  Created: {createdAtString || "-"}</div>
+            <div className=" h-10 px-4 rounded-full bg-black/10 dark:bg-muted/40 flex text-black dark:text-gray-500 items-center justify-center" >  Created: {createdAtString || "-"}</div>
             <div onClick={toggleSound} className="w-20 h-10 cursor-pointer rounded-full bg-black/10 dark:bg-muted/40 flex items-center justify-center" > 
              <Button
                 variant="ghost"
@@ -385,7 +413,20 @@ export function CounterCard({
                 </Button>
                 <DialogContent className="sm:max-w-lg text-white dark:text-white h-[80vh] overflow-y-auto custom-scrollbar   dark:bg-black/80 border-white/10 backdrop-blur-lg">
                   <DialogHeader>
-                    <DialogTitle className="font-display light:text-white text-xl bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent">Counter Settings</DialogTitle>
+                  
+                  <DialogTitle 
+  className="font-display text-xl"
+  style={{
+    background: 'linear-gradient(to right, #34d399, #a855f7)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    color: 'transparent'
+  }}
+>
+  Counter Settings
+</DialogTitle>
+                  
                   </DialogHeader>
                   <div className="space-y-6 dark:text-white py-4">
                     {/* Counter Name */}
@@ -446,34 +487,51 @@ export function CounterCard({
                         className="bg-white/10 dark:bg-white/10 border-white/20"
                       />
                     </div>
-                    {/* Increment Key */}
-                    <div className="space-y-2">
-                      <label className="text-sm text-foreground/70">Increment Key</label>
-                      <Select value={selectedIncrementKey} onValueChange={setSelectedIncrementKey}>
-                        <SelectTrigger className="w-full">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {keyOptions.map(opt => (
-                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    {/* Decrement Key */}
-                    <div className="space-y-2">
-                      <label className="text-sm text-foreground/70">Decrement Key</label>
-                      <Select value={selectedDecrementKey} onValueChange={setSelectedDecrementKey}>
-                        <SelectTrigger className="w-full">
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {keyOptions.map(opt => (
-                            <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
+
+<div className="space-y-2">
+  <label className="text-sm text-white/70">Increment Key</label> {/* Applied styling */}
+  <Select value={selectedIncrementKey} onValueChange={setSelectedIncrementKey}>
+    {/* Applied styling classes */}
+    <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
+      <SelectValue />
+    </SelectTrigger>
+    {/* Applied styling classes */}
+    <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
+      {keyOptions.map(opt => (
+        <SelectItem
+          key={opt.value}
+          value={opt.value}
+          className="text-white hover:bg-white/20 focus:bg-white/20" 
+        >
+          {opt.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
+{/* Decrement Key */}
+<div className="space-y-2">
+  <label className="text-sm text-white/70">Decrement Key</label> {/* Applied styling */}
+  <Select value={selectedDecrementKey} onValueChange={setSelectedDecrementKey}>
+    {/* Applied styling classes */}
+    <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
+      <SelectValue />
+    </SelectTrigger>
+    {/* Applied styling classes */}
+    <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
+      {keyOptions.map(opt => (
+        <SelectItem
+          key={opt.value}
+          value={opt.value}
+          className="text-white hover:bg-white/20 focus:bg-white/20" 
+        >
+          {opt.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
+
                     {/* Reset Button */}
                     <div className="space-y-2">
                       <Button
@@ -509,7 +567,7 @@ export function CounterCard({
           </div>
          
           {/* Counter value */}
-          <div className="text-[10vw] sm:text-7xl font-bold text-foreground text-center select-none mb-8" style={{lineHeight:1}}>
+          <div className="text-[10vw] sm:text-7xl font-bold dark:text-white text-white text-center select-none mb-8" style={{lineHeight:1}}>
             {counter.count.toLocaleString()}
           </div>
           {/* Increment/Decrement buttons, vertical stack, centered */}
@@ -571,7 +629,7 @@ export function CounterCard({
           
           {/* Only render createdAtString on client to avoid hydration mismatch */}
           {!isFullScreen && (
-            <>{ <div className="text-xs ps-6 me-auto text-muted-foreground ">Created: {createdAtString || "-"}</div>}</>
+            <>{ <div className="text-xs ps-6 me-auto text-white dark:text-muted-foreground ">Created: {createdAtString || "-"}</div>}</>
           )}
           
           <Button
@@ -597,10 +655,21 @@ export function CounterCard({
               <Settings className="w-4 h-4" />
             </Button>
             
-            <DialogContent className="sm:max-w-lg dark:text-white h-[80vh] overflow-y-auto custom-scrollbar bg-white  dark:bg-black/80 border-white/10 backdrop-blur-lg">
+            <DialogContent className="sm:max-w-lg text-white h-[80vh] overflow-y-auto custom-scrollbar   dark:bg-black/80 border-white/10 backdrop-blur-lg">
               <DialogHeader>
-                <DialogTitle className="font-display text-xl bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent">Counter Settings</DialogTitle>
-              </DialogHeader>
+               
+              <DialogTitle 
+  className="font-display text-xl"
+  style={{
+    background: 'linear-gradient(to right, #34d399, #a855f7)',
+    WebkitBackgroundClip: 'text',
+    backgroundClip: 'text',
+    WebkitTextFillColor: 'transparent'
+  }}
+>
+  Counter Settings
+</DialogTitle>
+                </DialogHeader>
               <div className="space-y-6 dark:text-white py-4">
                 {/* Counter Name */}
                 <div className="space-y-2">
@@ -662,32 +731,50 @@ export function CounterCard({
                 </div>
                 {/* Increment Key */}
                 <div className="space-y-2">
-                  <label className="text-sm text-foreground/70">Increment Key</label>
-                  <Select value={selectedIncrementKey} onValueChange={setSelectedIncrementKey}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {keyOptions.map(opt => (
-                        <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+  <label className="text-sm text-white/70">Increment Key</label>
+  <Select value={selectedIncrementKey} onValueChange={setSelectedIncrementKey}>
+    <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
+      <SelectValue />
+    </SelectTrigger>
+    <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
+  {keyOptions.map(opt => (
+    <SelectItem 
+      key={opt.value} 
+      value={opt.value}
+      className="text-white hover:bg-white/20 focus:bg-white/20"
+    >
+      {opt.label}
+    </SelectItem>
+  ))}
+</SelectContent>
+  </Select>
+</div>
                 {/* Decrement Key */}
-                <div className="space-y-2 dark:text-white">
-                  <label className="text-sm text-foreground/70">Decrement Key</label>
-                  <Select value={selectedDecrementKey} onValueChange={setSelectedDecrementKey}>
-                    <SelectTrigger className="w-full">
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {keyOptions.map(opt => (
-                        <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+             
+
+<div className="space-y-2"> {/* Removed dark:text-white here as text color is handled by select styles */}
+  <label className="text-sm text-white/70">Decrement Key</label> {/* Use white/70 for label */}
+  <Select value={selectedDecrementKey} onValueChange={setSelectedDecrementKey}>
+    {/* Apply the same classes to the SelectTrigger */}
+    <SelectTrigger className="w-full bg-white/10 border-white/20 text-white select-dropdown-fix">
+      <SelectValue />
+    </SelectTrigger>
+    {/* Apply the same classes to the SelectContent */}
+    <SelectContent className="bg-[#23272f] select-dropdown-fix border border-white/20 text-white z-[9999]">
+      {keyOptions.map(opt => (
+        <SelectItem 
+          key={opt.value} 
+          value={opt.value}
+          // Apply the same classes to SelectItem
+          className="text-white hover:bg-white/20 focus:bg-white/20"
+        >
+          {opt.label}
+        </SelectItem>
+      ))}
+    </SelectContent>
+  </Select>
+</div>
+
                 {/* Reset Button */}
                 <div className="space-y-2">
                   <Button

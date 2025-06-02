@@ -109,13 +109,13 @@ export function Navigation() {
               Last updated: May 23, 2025
             </DialogDescription>
           </DialogHeader>
-          <div className="space-y-8 py-4">
+          <div  className="space-y-8 py-4">
             <div className="space-y-4">
               <h3 className="text-xl font-semibold font-display text-gray-900 dark:text-white">Terms of Use</h3>
-              <p className="text-gray-700 dark:text-white/80 leading-relaxed">
+              <p className="text-blue-100 dark:text-white/80 leading-relaxed">
                 Welcome to TallyFlow, a beautiful way to keep track of anything that matters. By using our service, you agree to be bound by these Terms of Use. Please read them carefully.
               </p>
-              <div className="space-y-2 pl-4">
+              <div className="space-y-2  pl-4">
                 <p className="text-gray-700 dark:text-white/80 leading-relaxed">
                   • TallyFlow is provided "as is" without warranty of any kind, express or implied.
                 </p>

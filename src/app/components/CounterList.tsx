@@ -241,10 +241,10 @@ export function CounterList() {
             <button
               key={index}
               onClick={() => scrollToCounter(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
+              className={`w-3 h-3 rounded-full  transition-all ${
                 (index === currentIndex) 
                   ? 'bg-emerald-500 scale-125' 
-                  : 'dark:bg-white/30 bg-black/30 hover:bg-white/50'
+                  : 'dark:bg-white/30 bg-[#4B5563] dot-inactive hover:bg-white/50'
               }`}
             />
           ))}
@@ -278,7 +278,7 @@ export function CounterList() {
               sectionRefs.current.about = el;
             }}}
             id="home" 
-            className="pt-16 text-center h-[90vh] rounded-2xl overflow-hidden  backdrop-blur-md shadow-lg animate-fade-in"
+            className="pt-16 text-center h-[90vh] rounded-2xl overflow-hidden  dark:backdrop-blur-md shadow-lg animate-fade-in"
           >
             {/* View mode switcher with Add Counter and Full Screen */}
             <div className="mb-8 flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
@@ -288,20 +288,29 @@ export function CounterList() {
                 onValueChange={(value) => setViewMode(value as 'dual' | 'grid' | 'list')}
                 className="w-full max-w-md"
               >
-                <TabsList className="grid grid-cols-3 min-h-[45px] pb-4  light:bg-green-600 bg-white/10 border-[2px] border-black/20  backdrop-blur-sm">
-                  <TabsTrigger value="dual" className="dark:data-[state=active]:bg-white/40 data-[state=active]:bg-blue-500">
-                    <Tablet className="w-4 h-4 mr-2" />
-                    Dual
-                  </TabsTrigger>
-                  <TabsTrigger value="grid" className="dark:data-[state=active]:bg-white/20  data-[state=active]:bg-blue-500">
-                    <Grid className="w-4 h-4 mr-2" />
-                    Grid
-                  </TabsTrigger>
-                  <TabsTrigger value="list" className="data-[state=active]:bg-white/20">
-                    <List className="w-4 h-4 mr-2" />
-                    List
-                  </TabsTrigger>
-                </TabsList>
+                <TabsList className="grid grid-cols-3 min-h-[45px] pb-4 bg-white/10 dark:bg-white/10 border-[2px] border-black/20 backdrop-blur-sm">
+  <TabsTrigger 
+    value="dual" 
+    className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-white/40 transition-all"
+  >
+    <Tablet className="w-4 h-4 mr-2" />
+    Dual
+  </TabsTrigger>
+  <TabsTrigger 
+    value="grid" 
+    className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-white/20 transition-all"
+  >
+    <Grid className="w-4 h-4 mr-2" />
+    Grid
+  </TabsTrigger>
+  <TabsTrigger 
+    value="list" 
+    className="data-[state=active]:bg-emerald-500 data-[state=active]:text-white dark:data-[state=active]:bg-white/20 transition-all"
+  >
+    <List className="w-4 h-4 mr-2" />
+    List
+  </TabsTrigger>
+</TabsList>
               </Tabs>
 
               <div className="flex space-x-2">
@@ -315,16 +324,16 @@ export function CounterList() {
                   </Button>
            
                 
-                <Button
-                  onClick={() => setIsFullScreen(true)}
-                  variant="outline"
-                  disabled={counters.length === 0}
-                  className={`border border-gray-300 text-black bg-white hover:bg-white dark:bg-white/10 dark:border-white/20 dark:text-white dark:hover:bg-white/20 backdrop-blur-sm`}
-                  aria-disabled={counters.length === 0}
-                >
-                  <Maximize className="w-4 h-4 mr-2" />
-                  Full Screen
-                </Button>
+                  <Button
+  onClick={() => setIsFullScreen(true)}
+  variant="outline"
+  disabled={counters.length === 0}
+  className={`fullscreen-button text-black dark:bg-white/10 dark:border-white/20 dark:text-white dark:hover:bg-white/20`}
+  aria-disabled={counters.length === 0}
+>
+  <Maximize className="w-4 h-4 mr-2" />
+  Full Screen
+</Button>
               </div>
             </div>
 
@@ -463,9 +472,9 @@ export function CounterList() {
                   Flow
                 </span>
               </h1>
-              <p className="text-2xl text-foreground max-w-2xl mx-auto leading-relaxed">
-                A beautiful way to keep track of everything that matters to you
-              </p>
+              <p className="text-2xl text-foreground dark:text-white/70 max-w-2xl mx-auto">
+  A beautiful way to keep track of everything that matters to you
+</p>
             </div>
           </section>
           
@@ -501,7 +510,7 @@ export function CounterList() {
             className="py-28 text-center"
           >
             <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent font-display ">About TallyFlow</h2>
-            <p className="text-lg text-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-black dark:text-white/70 max-w-3xl mx-auto leading-relaxed">
               TallyFlow is a beautiful, intuitive counter application designed to help you keep track of anything that matters. Whether you're counting habits, tracking inventory, or keeping score, TallyFlow makes it simple and elegant.
             </p>
           </section>
@@ -516,27 +525,28 @@ export function CounterList() {
           >
             <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent font-display">How to Use</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="p-6 rounded-xl bg-black/10 dark:bg-white/10 backdrop-blur-md border border-white/20 text-left hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
-                  <Plus className="text-white w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 font-display">Create Counters</h3>
-                <p className="text-foreground/70">Add as many counters as you need, and give each one a meaningful name.</p>
-              </div>
-              <div className="p-6 rounded-xl bg-black/10 dark:bg-white/10 backdrop-blur-md border border-white/20 text-left hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
-                  <Settings className="text-white w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 font-display">Customize</h3>
-                <p className="text-foreground/70">Set starting values, adjust views, and personalize your counting experience.</p>
-              </div>
-              <div className="p-6 rounded-xl bg-black/10 dark:bg-white/10 backdrop-blur-md border border-white/20 text-left hover:scale-105 transition-transform">
-                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
-                  <Maximize className="text-white w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-2 font-display">Focus Mode</h3>
-                <p className="text-foreground/70">Use full-screen mode for distraction-free counting when you need to focus.</p>
-              </div>
+            <div className="p-6 rounded-xl bg-white dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 text-left hover:scale-105 transition-transform">
+  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
+    <Plus className="text-black/80 dark:text-white w-6 h-6" />
+  </div>
+  <h3 className="text-xl text-black dark:text-white/70 font-bold mb-2 font-display">Create Counters</h3>
+  <p className="text-black/80 dark:text-white/70">Add as many counters as you need, and give each one a meaningful name.</p>
+</div>
+              <div className="p-6 rounded-xl bg-white dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 text-left hover:scale-105 transition-transform">
+  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
+    <Settings className="text-black/80 dark:text-white w-6 h-6" />
+  </div>
+  <h3 className="text-xl text-black dark:text-white/70 font-bold mb-2 font-display">Customize</h3>
+  <p className="text-black/80 dark:text-white/70">Set starting values, adjust views, and personalize your counting experience.</p>
+</div>
+
+<div className="p-6 rounded-xl bg-white dark:bg-white/10 backdrop-blur-md border border-gray-200 dark:border-white/20 text-left hover:scale-105 transition-transform">
+  <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-purple-500 rounded-full flex items-center justify-center mb-4">
+    <Maximize className="text-black/80 dark:text-white w-6 h-6" />
+  </div>
+  <h3 className="text-xl text-black dark:text-white/70 font-bold mb-2 font-display">Focus Mode</h3>
+  <p className="text-black/80 dark:text-white/70">Use full-screen mode for distraction-free counting when you need to focus.</p>
+</div>
             </div>
           </section>
 
@@ -639,7 +649,7 @@ export function CounterList() {
       </div>
       
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 bg-black/30 backdrop-blur-md pt-12">
+      <footer className="relative z-10 border-t border-white/10 bg-foreground/10 dark:bg-black/30 dark:backdrop-blur-md pt-12">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
             <div>

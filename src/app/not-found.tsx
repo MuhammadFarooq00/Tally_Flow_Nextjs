@@ -7,11 +7,13 @@ const NotFound = () => {
   const router = useRouter();
 
   useEffect(() => {
-    console.error(
-      "404 Error: User attempted to access non-existent route:",
-      window.location.pathname
-    );
-  }, [window.location.pathname]);
+    if (typeof window !== 'undefined') {
+      console.error(
+        "404 Error: User attempted to access non-existent route:",
+        window.location.pathname
+      );
+    }
+  }, []);
 
   return (
     <>
