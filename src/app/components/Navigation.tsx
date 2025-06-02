@@ -102,13 +102,14 @@ export function Navigation() {
 
       {/* Terms Modal */}
       <Dialog open={isTermsOpen} onOpenChange={setIsTermsOpen}>
-        <DialogContent className="max-w-4xl max-h-[85vh] overflow-y-auto bg-white/95 dark:bg-gradient-to-br dark:from-gray-900/90 dark:to-black/90 backdrop-blur-md border border-gray-200 dark:border-white/10">
+        <DialogContent className="max-w-4xl max-h-[85vh]  overflow-y-auto bg-white/95 dark:bg-gradient-to-br dark:from-gray-900/90 dark:to-black/90 backdrop-blur-md border border-gray-200 dark:border-white/10">
           <DialogHeader>
             <DialogTitle className="text-3xl font-display bg-gradient-to-r from-emerald-400 to-purple-500 bg-clip-text text-transparent">Terms & Privacy Policy</DialogTitle>
             <DialogDescription className="text-gray-700 dark:text-white/70">
               Last updated: May 23, 2025
             </DialogDescription>
           </DialogHeader>
+
           <div  className="space-y-8 py-4">
             <div className="space-y-4">
               <h3 className="text-xl font-semibold font-display text-gray-900 dark:text-white">Terms of Use</h3>
